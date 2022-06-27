@@ -1,21 +1,21 @@
 package driver
 
 import (
-	"clean-architecture-learn/adapter/controller"
-	"clean-architecture-learn/adapter/gateway"
-	"clean-architecture-learn/adapter/presenter"
-	"clean-architecture-learn/usecase/interactor"
+	"clean-architecture-learn/driver/router"
 
 	"github.com/labstack/echo/v4"
 )
 
-func Routing(e *echo.Echo) {
-	api := e.Group("/api")
+type Router interface {
+	Routing(g *echo.Group)
+}
 
-	toDoController := controller.ToDoController{
-		InputFactory: interactor.NewTodoInteractor,
-		OutputFactory: presenter.NewTodoPresenter,
-		RepositoryFactory: gateway.NewTodoRepository,
-	}
-	api.GET("/todos", toDoController.GetAllTodos)
+func setRouting(r Router, g *echo.Group) {
+	r.Routing(g)
+}
+
+func Routing(e *echo.Echo) {
+	g := e.Group("/api")
+
+	setRouting(router.ToDoRouter{}, g)
 }
