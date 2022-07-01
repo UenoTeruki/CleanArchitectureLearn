@@ -17,5 +17,5 @@ func setRouting(r Router, g *echo.Group) {
 func Routing(e *echo.Echo) {
 	g := e.Group("/api")
 
-	setRouting(router.ToDoRouter{}, g)
+	setRouting(router.TodoRouter{}, g)
 }

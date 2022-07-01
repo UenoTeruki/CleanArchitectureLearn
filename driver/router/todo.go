@@ -9,10 +9,10 @@ import(
 	"github.com/labstack/echo/v4"
 )
 
-type ToDoRouter struct {}
+type TodoRouter struct {}
 
-func(r ToDoRouter) Routing(g *echo.Group) {
-	toDoController := controller.ToDoController{
+func(r TodoRouter) Routing(g *echo.Group) {
+	toDoController := controller.TodoController{
 		InputFactory: interactor.NewTodoInteractor,
 		OutputFactory: presenter.NewTodoPresenter,
 		RepositoryFactory: gateway.NewTodoRepository,

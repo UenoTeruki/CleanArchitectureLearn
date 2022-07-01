@@ -6,13 +6,13 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type ToDoController struct {
-	InputFactory func(presenter port.OutputPort, repository port.RepositoryPort) port.InputPort
-	OutputFactory func(ctx echo.Context) port.OutputPort
-	RepositoryFactory func(ctx echo.Context) port.RepositoryPort
+type TodoController struct {
+	InputFactory func(presenter port.TodoOutputPort, repository port.TodoRepository) port.TodoInputPort
+	OutputFactory func(ctx echo.Context) port.TodoOutputPort
+	RepositoryFactory func(ctx echo.Context) port.TodoRepository
 }
 
-func(c *ToDoController) GetAllTodos(ctx echo.Context) error {
+func(c *TodoController) GetAllTodos(ctx echo.Context) error {
 	presenter := c.OutputFactory(ctx)
 	repository := c.RepositoryFactory(ctx)
 
@@ -20,7 +20,7 @@ func(c *ToDoController) GetAllTodos(ctx echo.Context) error {
 	return interactor.GetAllTodos()
 }
 
-func(c *ToDoController) CreateNewTodo(ctx echo.Context) error {
+func(c *TodoController) CreateNewTodo(ctx echo.Context) error {
 	presenter := c.OutputFactory(ctx)
 	repository := c.RepositoryFactory(ctx)
 

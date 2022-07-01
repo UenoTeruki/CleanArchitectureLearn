@@ -5,11 +5,11 @@ import (
 )
 
 type ToDoInteractor struct {
-	presenter port.OutputPort
-	repository port.RepositoryPort
+	presenter port.TodoOutputPort
+	repository port.TodoRepository
 }
 
-func NewTodoInteractor(presenter port.OutputPort, repository port.RepositoryPort) port.InputPort {
+func NewTodoInteractor(presenter port.TodoOutputPort, repository port.TodoRepository) port.TodoInputPort {
 	return &ToDoInteractor{
 		presenter: presenter,
 		repository: repository,

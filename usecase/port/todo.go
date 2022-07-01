@@ -2,17 +2,17 @@ package port
 
 import "clean-architecture-learn/entity"
 
-type InputPort interface {
+type TodoInputPort interface {
 	GetAllTodos() error
 	CreateNewTodo() error
 }
 
-type OutputPort interface {
-	OutputAllTodos(todos []*entity.ToDo) error
-	SuccessfullyCreated(todo *entity.ToDo) error
+type TodoOutputPort interface {
+	OutputAllTodos(todos []*entity.Todo) error
+	SuccessfullyCreated(todo *entity.Todo) error
 }
 
-type RepositoryPort interface {
-	GetAllTodos() []*entity.ToDo
-	CreateNewTodo() *entity.ToDo
+type TodoRepository interface {
+	GetAllTodos() []*entity.Todo
+	CreateNewTodo() *entity.Todo
 }
