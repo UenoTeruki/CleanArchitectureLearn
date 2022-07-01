@@ -19,4 +19,5 @@ func(r ToDoRouter) Routing(g *echo.Group) {
 	}
 
 	g.GET("/todos", toDoController.GetAllTodos)
+	g.POST("/todos", toDoController.CreateNewTodo)
 }

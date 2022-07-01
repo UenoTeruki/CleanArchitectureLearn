@@ -21,3 +21,7 @@ func NewTodoPresenter(ctx echo.Context) port.OutputPort {
 func(p *TodoPresenter) OutputAllTodos(todos []*entity.ToDo) error {
 	return p.ctx.JSON(http.StatusOK, todos)
 }
+
+func(p *TodoPresenter) SuccessfullyCreated(todo *entity.ToDo) error {
+	return p.ctx.JSON(http.StatusOK, todo)
+}

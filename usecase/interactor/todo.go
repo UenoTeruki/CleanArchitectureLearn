@@ -20,3 +20,8 @@ func(i *ToDoInteractor) GetAllTodos() error {
 	todos := i.repository.GetAllTodos()
 	return i.presenter.OutputAllTodos(todos)
 }
+
+func(i *ToDoInteractor) CreateNewTodo() error {
+	todo := i.repository.CreateNewTodo()
+	return i.presenter.SuccessfullyCreated(todo)
+}
